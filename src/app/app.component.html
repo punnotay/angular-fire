@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<div class="row columns">
+  <button (click)="login()" *ngIf="!name">Anonymous login</button>
+  <input type="text" id="message" *ngIf="name" placeholder="To do!"
+      (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
+  <div id="details-container">
+    <p *ngFor="let item of items | async">
+      <img src="../assets/images/ic_pin.svg">{{item.message}}
+    <p>
+  </div>
+</div>
