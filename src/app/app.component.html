@@ -1,6 +1,7 @@
 <div class="row columns">
-  <button (click)="login()" *ngIf="!name">Anonymous login</button>
-  <input type="text" id="message" *ngIf="name" placeholder="To do!"
+  <button (click)="login()" *ngIf="!(name | async)?.uid">Anonymous login</button>
+  <button (click)="logout()" *ngIf="(name | async)?.uid">Logout</button>
+  <input type="text" id="message" *ngIf="(name | async)?.uid" placeholder="To do!"
       (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
   <div id="details-container">
     <p *ngFor="let item of items | async">
